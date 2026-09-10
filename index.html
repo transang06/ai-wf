@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Workflow Mini</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header>
+        <div>
+          <p class="eyebrow">AI WORKFLOW MINI</p>
+          <h1>Task board</h1>
+        </div>
+        <form id="task-form">
+          <input id="task-input" aria-label="Tên task" placeholder="Việc cần làm..." required />
+          <button>Thêm task</button>
+        </form>
+      </header>
+      <section id="tasks" class="board" aria-label="Danh sách task"></section>
+    </main>
+    <template id="card-template">
+      <article class="card">
+        <span class="card-title"></span>
+        <div><button class="move">Chuyển tiếp →</button><button class="delete">×</button></div>
+      </article>
+    </template>
+    <script src="app.js"></script>
+  </body>
+</html>

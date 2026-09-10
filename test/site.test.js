@@ -7,3 +7,9 @@ test('trang có các phần chính của task board', () => {
   assert.match(page, /AI Workflow Mini/);
   assert.match(page, /id="tasks"/);
 });
+
+test('không tạo task chỉ có khoảng trắng', () => {
+  const script = readFileSync('app.js', 'utf8');
+  assert.match(script, /const title = input\.value\.trim\(\);/);
+  assert.match(script, /if \(!title\) return;/);
+});
