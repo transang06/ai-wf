@@ -34,7 +34,9 @@ function render() {
 document.querySelector('#task-form').onsubmit = event => {
   event.preventDefault();
   const input = document.querySelector('#task-input');
-  tasks.push({ id: Date.now(), title: input.value.trim(), status: 'todo' });
+  const title = input.value.trim();
+  if (!title) return;
+  tasks.push({ id: Date.now(), title, status: 'todo' });
   input.value = ''; save(); render();
 };
 render();
