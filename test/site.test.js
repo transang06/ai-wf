@@ -21,3 +21,9 @@ test('có tiến độ và thao tác khôi phục task mẫu', () => {
   assert.match(page, /id="reset"/);
   assert.match(script, /createInitialTasks\(\)/);
 });
+
+test('CSS có quy tắc cho mobile hẹp', () => {
+  const styles = readFileSync('style.css', 'utf8');
+  assert.match(styles, /white-space: nowrap/);
+  assert.match(styles, /@media \(max-width: 380px\)/);
+});
