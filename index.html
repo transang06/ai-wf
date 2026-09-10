@@ -13,10 +13,14 @@
           <p class="eyebrow">AI WORKFLOW MINI</p>
           <h1>Task board</h1>
         </div>
-        <form id="task-form">
-          <input id="task-input" aria-label="Tên task" placeholder="Việc cần làm..." required />
-          <button>Thêm task</button>
-        </form>
+        <div class="actions">
+          <p id="progress" aria-live="polite"></p>
+          <form id="task-form">
+            <input id="task-input" aria-label="Tên task" placeholder="Việc cần làm..." required />
+            <button>Thêm task</button>
+          </form>
+          <button id="reset" class="secondary" type="button">Khôi phục task mẫu</button>
+        </div>
       </header>
       <section id="tasks" class="board" aria-label="Danh sách task"></section>
     </main>

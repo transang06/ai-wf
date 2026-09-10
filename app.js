@@ -3,15 +3,17 @@ const columns = [
   ['doing', 'Đang làm'],
   ['done', 'Hoàn tất'],
 ];
-const initialTasks = [
+const createInitialTasks = () => [
   { id: 1, title: 'Viết requirement', status: 'todo' },
   { id: 2, title: 'Thiết kế UI', status: 'doing' },
   { id: 3, title: 'Tạo GitHub Issues', status: 'done' },
 ];
-let tasks = JSON.parse(localStorage.getItem('ai-wf-tasks')) || initialTasks;
+let tasks = JSON.parse(localStorage.getItem('ai-wf-tasks')) || createInitialTasks();
 
 function save() { localStorage.setItem('ai-wf-tasks', JSON.stringify(tasks)); }
 function render() {
+  const completed = tasks.filter(task => task.status === 'done').length;
+  document.querySelector('#progress').textContent = `Hoàn tất ${completed}/${tasks.length} task`;
   const board = document.querySelector('#tasks');
   board.innerHTML = '';
   columns.forEach(([status, label], index) => {
@@ -38,5 +40,10 @@ document.querySelector('#task-form').onsubmit = event => {
   if (!title) return;
   tasks.push({ id: Date.now(), title, status: 'todo' });
   input.value = ''; save(); render();
+};
+document.querySelector('#reset').onclick = () => {
+  tasks = createInitialTasks();
+  save();
+  render();
 };
 render();
