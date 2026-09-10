@@ -13,3 +13,11 @@ test('không tạo task chỉ có khoảng trắng', () => {
   assert.match(script, /const title = input\.value\.trim\(\);/);
   assert.match(script, /if \(!title\) return;/);
 });
+
+test('có tiến độ và thao tác khôi phục task mẫu', () => {
+  const page = readFileSync('index.html', 'utf8');
+  const script = readFileSync('app.js', 'utf8');
+  assert.match(page, /id="progress"/);
+  assert.match(page, /id="reset"/);
+  assert.match(script, /createInitialTasks\(\)/);
+});
